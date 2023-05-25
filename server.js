@@ -10,6 +10,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 // environment variables
 SECRET_SESSION = process.env.SECRET_SESSION;
 // console.log(">>>>>>>>>>", SECRET_SESSION);
+
 // express_authentication git:(main) ✗ npm run dev
 
 // > express_authentication@1.0.0 dev
