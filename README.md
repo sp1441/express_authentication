@@ -60,7 +60,7 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 
 ```text
 git add .
-git commit -m "Install dependencies for project"
+git commit -m "chore: Install dependencies for project"
 ```
 
 ## `2` Create Database & Update Sequelize Config
@@ -215,7 +215,7 @@ module.exports = (sequelize, DataTypes) => {
 `3` Make a *commit* message
 ```text
 git add .
-git commit -m "add: user model and validations"
+git commit -m "chore: add: user model and validations"
 ```
 
 ## `5` Add Methods to `user` Model to Hash Password, Etc.
@@ -320,7 +320,7 @@ app.use((req, res, next) => {
 `8` Make *commit* message
 ```text
 git add .
-git commit -m "Create env variable and add session and flash middleware" 
+git commit -m "feat: Create env variable and add session and flash middleware" 
 ```
 
 ## `7` Create Passport Configuration
@@ -401,7 +401,7 @@ module.exports = passport;
 `8` Make *commit* message
 ```text
 git add .
-git commit -m "ppConfig: Create passport configuration" 
+git commit -m "feat: [ppConfig]: Create passport configuration" 
 ```
 
 ## `8` Import Passport Config and Initialize
@@ -445,7 +445,7 @@ const passport = require('../config/ppConfig');
 `4` Make *commit* message
 ```text
 git add .
-git commit -m "server: Import passport and pass through middleware" 
+git commit -m "chore: [server]: Import passport and pass through middleware" 
 ```
 
 ## `9` Add `isLoggedIn` Middleware
@@ -483,7 +483,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 `6` Make *commit* message
 ```text
 git add .
-git commit -m "isLoggedIn: add middleware and import to server" 
+git commit -m "feat: [isLoggedIn]: add middleware and import to server" 
 ```
 
 ## `10` Make Login `/POST` Route
@@ -518,7 +518,7 @@ router.post('/login', passport.authenticate('local', {
 `3` Make *commit* message
 ```text
 git add .
-git commit -m "auth: add login post route"
+git commit -m "feat: [auth]: add login post route"
 ```
 
 ## `11` Make Signup `/POST` Route
@@ -585,7 +585,7 @@ router.post('/signup', async (req, res) => {
 `4` Make *commit* message
 ```text
 git add .
-git commit -m "auth: add signup post route"
+git commit -m "feat: [auth]: add signup post route"
 ```
 
 ## `12` Make `logout` /GET Route
@@ -606,7 +606,7 @@ router.get('/logout', (req, res) => {
 `3` Make *commit* message
 ```text
 git add .
-git commit -m "auth: add logout get route"
+git commit -m "feat: [auth] add logout get route"
 ```
 
 ## `13` Create Partials For Alerts
@@ -641,7 +641,7 @@ The purpose of these partials ( `views` ) is to render the `flash` alerts to the
 `5` Make *commit* message
 ```text
 git add .
-git commit -m "alerts: add partials for flash alerts"
+git commit -m "feat: [alerts] add partials for flash alerts"
 ```
 
 ## `14` Add Logic to Layout Page For User
@@ -690,7 +690,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 `3` Make *commit* message
 ```text
 git add .
-git commit -m "profile: add route and send data to view page"
+git commit -m "feat: [profile] add route and send data to view page"
 ```
 
 ## `16` Start App and Debug
