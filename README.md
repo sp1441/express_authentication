@@ -333,7 +333,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 // Database
-const db = require('../models');
+const { user } = require('../models');
 ```
 
 `3` Create a new instance of a `LocalStrategy`
@@ -344,7 +344,7 @@ const STRATEGY = new LocalStrategy({
     passwordField: 'password'       // looks for an password field as the password
     }, async (email, password, cb) => {
         try {
-            const user = await db.user.findOne({
+            const user = await user.findOne({
                 where: { email }
             });
 
@@ -374,7 +374,7 @@ passport.serializeUser((user, cb) => {
 ```js
 passport.deserializeUser(async (id, cb) => {
     try {
-        const user = await db.user.findByPk(id);
+        const user = await user.findByPk(id);
 
         if (user) {
             cb(null, user)
@@ -483,7 +483,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 `6` Make *commit* message
 ```text
 git add .
-git commit -m "feat: [isLoggedIn]: add middleware and import to server" 
+git commit -m "feat: [isLoggedIn] add middleware and import to server" 
 ```
 
 ## `10` Make Login `/POST` Route
@@ -518,7 +518,7 @@ router.post('/login', passport.authenticate('local', {
 `3` Make *commit* message
 ```text
 git add .
-git commit -m "feat: [auth]: add login post route"
+git commit -m "feat: [auth] add login post route"
 ```
 
 ## `11` Make Signup `/POST` Route
@@ -541,7 +541,7 @@ The form that the data will be submitted from:
 ```
 `1` Import **`database`** into `auth.js` file
 ```js
-const db = require('../models');
+const { user } = require('../models');
 ```
 
 `2` Create a **`post`** route for signup
@@ -551,7 +551,7 @@ router.post('/signup', async (req, res) => {
   // we now have access to the user info (req.body);
   const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object
   try {
-    const [user, created] = await db.user.findOrCreate({
+    const [user, created] = await user.findOrCreate({
         where: { email },
         defaults: { name, password }
     });
@@ -585,7 +585,7 @@ router.post('/signup', async (req, res) => {
 `4` Make *commit* message
 ```text
 git add .
-git commit -m "feat: [auth]: add signup post route"
+git commit -m "feat: [auth] add signup post route"
 ```
 
 ## `12` Make `logout` /GET Route
@@ -648,6 +648,7 @@ git commit -m "feat: [alerts] add partials for flash alerts"
 The purpose of building out this logic will be to display on the page whether or not the user is logged in or not. If the user is logged in, then we would remove a link for logging in or signup. If the user is not logged in, the we will display the links for the user to log in or sign up.
 
 `1` Add conditional logic to display links for being logged in or not inside of `layout.ejs`
+
 ```ejs
 <% if (!currentUser) {%>
     <li><a href="/auth/signup">Signup</a></li>
